@@ -1,0 +1,9 @@
+user-agent: *
+Disallow:/page/1.html
+Disallow:/page/2.html
+Disallow:/page/3.html
+Disallow:/fale-com.html
+Disallow:/cadastre-se.html
+Disallow:/recomendacoes.html
+Disallow:/videos.html
+

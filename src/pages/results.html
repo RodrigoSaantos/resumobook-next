@@ -1,0 +1,37 @@
+{% extends 'layout-page.html' %}
+
+
+{% block content %}
+
+{% if total > 0 %}
+
+    <h4><strong>{{total}} post encontrado</strong></h4>
+
+        {% for place in places %}
+            <div class="caixa-post-padrao" id="post-{{place.id}}">
+                <a href="/post/{{place.url}}"><img class="box-img" src="{{place.image}}" alt="{{place.title}}" title="{{place.authorImage}}">
+                    <h1 class="caixa-post-titulo">{{place.title}}<hr class="border" style="border-color: rgb(255, 126, 0); transition-duration: 0.3s;"></h1>
+                    <p class="caixa-post-text">{{place.description}}</p>
+                </a>
+                <div class="read-more">
+                    <a href="/post/{{place.url}}">Leia mais ➭</a>
+                </div>
+            </div>
+
+        {% endfor %}
+
+
+{% else%}
+
+    <h4><strong>Nenhum</strong> post encontrado</h4>
+
+{% endif %}
+
+
+
+{% endblock content %}
+
+{% block buttonsPage %}
+{% endblock buttonsPage %}
+
+

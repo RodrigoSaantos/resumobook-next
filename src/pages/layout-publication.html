@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="/images/pagina-inicial/favicon.png" rel="shortcut icon">
+        <link href="https://resumobook.com.br" rel="canonical">
+        <link href="/css/estilo.css?v=2" rel="stylesheet" type="text/css">
+
+        <script type="module" src="/js/layoutHead.js"></script>
+
+        {% block title %}
+            <title>ResumoBook</title>
+        {% endblock title %}
+
+        {% block metaRedeSocial %}
+            <meta name="description" content=" {{places[numberPage].description}} ">
+            <meta property="og:url" content="https://resumobook.com.br/post/{{places[numberPage].url}}">
+            <meta property="og:type" content="article">
+            <meta property="og:title" content="{{places[numberPage].title}}">
+            <meta property="og:description" content="  {{places[numberPage].description}} ">
+            <meta property="og:image" content="https://resumobook.com.br{{places[numberPage].image}}">
+            <meta property="og:image:secure_url" content="https://resumobook.com.br{{places[numberPage].image}}">
+
+        {% endblock metaRedeSocial %}
+
+    </head>
+
+    <body id="{{ bodyId }}">
+
+        {% include 'partials/page-header.html'%}
+
+        {% block header %}
+
+            <section id="header" class="post">
+                <h2 class="text-fundo-padrao">POST</h2>
+            </section>
+
+        {% endblock header %}
+
+        {% block titleOfPage %}
+        
+            <div id="titleOfPageContent" class="caixa-post-titulo-corpo">
+                <h1 class="caixa-post-titulo-1">
+                    {{places[numberPage].title}}
+                </h1>
+            </div>
+
+        {% endblock titleOfPage %}
+
+
+
+        <section>
+            <article id="pageContent" class="article-padrao">
+
+                <div class="caixa-post-padrao-1">
+
+                    {% block content %}
+                    {% endblock content %}
+
+                    {% block goBack %}
+
+                        <button type="button" class="botao-voltar">Voltar</button>
+
+                    {% endblock goBack %}
+
+
+                    <div class="regua-horizonatal-position-1">
+
+                        {% block linkAffiliate %}
+                            <a href="{{places[numberPage].customLinkAffiliate}}" target="_blank">
+                            <button type="button" class="botao botao-centralizado">Caso queira adquirir o livro clique aqui</button>
+                             </a>
+
+                        {% endblock linkAffiliate %}
+                    
+                        <div class="regua-horizontal-corpo-1"></div>
+                        <img src="/images/publicacoes/compartilhe-amor-nos-diga-o-que-voce-acha.png" alt="Deixe seu comentário" width="597" height="63" class="image-compartilhe">
+                    </div>
+
+                    {% block comments %}
+
+                        {% include 'partials/comments.html'%}
+
+                    {% endblock comments %}
+
+            
+                </div>
+                <aside class="caixa-post-padrao-2">
+                    {% block buttonShare %}
+                    
+                        {% include 'partials/box-rede-social.html'%}
+
+                    {% endblock buttonShare %}
+                </aside>
+            </article>
+
+            {% block lastPost %}
+
+                {% include 'partials/box-last-post.html'%}
+
+            {% endblock lastPost %}
+
+
+        </section>
+
+        {% block footer %}
+            {% include 'partials/footer.html'%}
+        {% endblock footer %}
+
+        <script type="module" src="/js/layoutBody.js"></script>
+
+    </body>
+
+</html>

@@ -3,7 +3,6 @@ import React from "react";
 import { ButtonsPage } from "../components/ButtonsPage";
 import { Footer } from "../components/Footer";
 import { PageHeader } from "../components/PageHeader";
-import { Search } from '../components/Search';
 
 export default function Home() {
   return (

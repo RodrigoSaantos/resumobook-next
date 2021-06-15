@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            <link href="/images/pagina-inicial/favicon.png" rel="shortcut icon">
+            <link href="https://resumobook.com.br" rel="canonical">
+            <link href="/css/estilo.css" rel="stylesheet" type="text/css">
+
+            <script type="module" src="/js/layoutHead.js"></script>
+
+        {% block title %}
+            <title>ResumoBook | POST - {{numberOfPage}}</title>
+        {% endblock title %}
+
+        {% block metaRedeSocial %}
+            <meta name="description" content="Confira todos os post do site!">
+            <meta property="og:url" content="https://resumobook.com.br/page/{{numberOfPage}}">
+            <meta property="og:type" content="article">
+            <meta property="og:title" content="ResumoBook | POST - {{numberOfPage}}">
+            <meta property="og:description" content="Confira todos os post do site!">
+        {% endblock metaRedeSocial %}
+
+    </head>
+
+    <body>
+
+        {% include 'partials/page-header.html'%}
+
+        {% block header %}
+
+            <section id="header" class="post">
+                <h2 class="text-fundo-padrao">POST</h2>
+            </section>
+
+        {% endblock header %}
+
+
+        <section>
+
+            {% block search %}
+                {% include 'partials/search.html' %}
+            {% endblock search %}
+
+            {% block content %}
+
+
+                <article class="article-padrao" id="publicationsResume">
+
+
+                    {% for place in places %}
+                        <div class="caixa-post-padrao" id="post-{{place.id}}">
+                            <a href="/post/{{place.url}}"><img class="box-img" src="{{place.image}}" alt="{{place.title}}" title="{{place.authorImage}}">
+                                <h1 class="caixa-post-titulo">{{place.title}}<hr class="border" style="border-color: rgb(255, 126, 0); transition-duration: 0.3s;"></h1>
+                                <p class="caixa-post-text">{{place.description}}</p>
+                            </a>
+                            <div class="read-more">
+                                <a href="/post/{{place.url}}">Leia mais ➭</a>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+
+                </article>
+            {% endblock content %}
+
+            {% block buttonsPage %}
+                {% include 'partials/buttons-page.html'%}
+            {% endblock buttonsPage %}
+
+
+        </section>
+        
+        {% block footer %}
+            {% include 'partials/footer.html'%}
+        {% endblock footer %}
+
+
+        <script type="module" src="/js/layoutBody.js"></script>
+
+    </body>
+
+</html>
