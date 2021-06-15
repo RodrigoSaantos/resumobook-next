@@ -1,0 +1,27 @@
+<section class="redes-sociais-estilo">
+    <span class="caixa-post-text-1">Compartilhe!</span>
+    <div class="redes-sociais-estilo-1">
+        <button type="button" class="botao-rede-social botao-facebook" onclick="janelaPopUp('https://www.facebook.com/sharer/sharer.php?u=https://resumobook.com.br/post/{{places[numberPage].url}}')"><img src="/images/publicacoes/facebook icone.png" alt="icone facebook" width="20" height="20" class="img-rede-social">
+            <span class="rede-social-text">Compartilhe no Facebook</span></button>
+    </div>
+    <div class="redes-sociais-estilo-1">
+        <button type="button" class="botao-rede-social botao-twitter" onclick="janelaPopUp('https://twitter.com/intent/tweet?text={{places[numberPage].title}} https://resumobook.com.br/post/{{places[numberPage].url}}')">
+            <img src="/images/publicacoes/twitter icone.png" alt="icone twitter" width="20" height="20" class="img-rede-social" style="margin-left: -28px;">
+            <span class="rede-social-text">Compartilhe no Twitter</span>
+        </button>
+    </div>
+    <div class="redes-sociais-estilo-1">
+        <button type="button" class="botao-rede-social botao-whatsapp" onclick="janelaPopUp('https://api.whatsapp.com/send?text=https://resumobook.com.br/post/{{places[numberPage].url}}')"><img src="/images/publicacoes/whasapp icone.png" alt="icone WhatsApp" width="20" height="20" class="img-rede-social">
+            <span class="rede-social-text">Compartilhe no WhatsApp</span></button>
+    </div>
+    <div class="redes-sociais-estilo-1">
+        <button type="button" class="botao-rede-social botao-linkedin" onclick="janelaPopUp('https://www.linkedin.com/shareArticle?mini=true&url=https://resumobook.com.br/post/{{places[numberPage].url}}')"><img src="/images/publicacoes/linkedin icone.png" alt="icone Linkedin" width="20" height="20" class="img-rede-social">
+            <span class="rede-social-text">Compartilhe no Linkedin</span></button>
+    </div>
+</section>
+
+<script>
+    function janelaPopUp(URL) {
+  window.open(URL, 'janela', 'width=795, height=590, top=100, left=699, scrollbars=no, status=no, toolbar=no, location=no, menubar=no, resizable=no, fullscreen=no')
+}
+</script>

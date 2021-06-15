@@ -1,0 +1,18 @@
+<section class="article-padrao">
+    <p class="last-post-text">Últimos Posts</p>
+    <article class="last-post-box" style="border-bottom: none;">
+        <a href="{{places[lastPost].url}}"><img class="box-img" src="{{places[lastPost].image}}" alt="{{places[lastPost].title}}" title="{{places[lastPost].authorImage}}">
+            <h1 class="caixa-post-titulo">{{places[lastPost].title}}<hr class="border"></h1>
+        </a>
+    </article>
+    <article class="last-post-box" style="border-bottom: none;">
+        <a href="{{places[lastPost-1].url}}"><img class="box-img" src="{{places[lastPost-1].image}}" alt="{{places[lastPost-1].title}}" title="{{places[lastPost-1].authorImage}}">
+            <h1 class="caixa-post-titulo">{{places[lastPost-1].title}}<hr class="border"></h1>
+        </a>
+    </article>
+    <article class="last-post-box" style="border-bottom: none;">
+        <a href="{{places[lastPost-2].url}}"><img class="box-img" src="{{places[lastPost-2].image}}" alt="{{places[lastPost-2].title}}" title="{{places[lastPost-2].authorImage}}">
+            <h1 class="caixa-post-titulo">{{places[lastPost-2].title}}<hr class="border"></h1>
+        </a>
+    </article>
+</section>
