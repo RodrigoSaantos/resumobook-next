@@ -151,7 +151,7 @@ ul li:hover a {
 }
 .title-body{
 	text-align: center;
-	margin: center;
+	/* margin: center; */
 	margin-left: 48%;
 	margin-bottom: auto;
 }
