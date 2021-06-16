@@ -26,7 +26,7 @@ export default function Home() {
 
 
 <section id="post">
-      <div className="background-book"> </div>
+      <div className="background-book"></div>
       <div className="post_corpo">
         <div className="title-body">
           <h1 className="post_titulo">POST</h1>
