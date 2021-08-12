@@ -7,16 +7,16 @@ import { PageHeader } from "../../components/PageHeader";
 import axios from 'axios';
 
 type PostProps = {
-  "url": string;
-  "thumb": string;
-  "authorThumb": string;
-  "title": string;
-  "text": string;
-  "idpost": string;
+  url: string;
+  thumb: string;
+  authorThumb: string;
+  title: string;
+  text: string;
+  idpost: string;
 }
 
 export default function Falecom() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<PostProps[]>([]);
 
   useEffect(() => {
     axios.get('/api/posts').then(response => {
@@ -36,34 +36,29 @@ export default function Falecom() {
 
     <PageHeader />
 
-    <section id="about">
-      <article className="about-myself">
-      
-        <h2 className="text-sobremim"> POST</h2>
-      
-        <img src="images/pagina-inicial/iconedown.png" alt="icone down" height="15" width="22" className="icone" />
-      </article>
+    <section id="header" className="post">
+        <h2 className="text-fundo-padrao">POST</h2>
     </section>
 
     <section>
       <article className="article-padrao" id="publicationsResume">
 
-
-          {/* <div className="caixa-post-padrao" id="post-{{place.id}}">
-              <a href="/post/{{place.url}}">
-                <img className="box-img" src="{{place.image}}" alt="{{place.title}}" title="{{place.authorImage}}" />
-                <h1 className="caixa-post-titulo">
-                  {{place.title}}<hr className="border" style={{borderColor: 'rgb(255, 126, 0)', transitionDuration: '0.3s'}} />
-                </h1>
-                  <p className="caixa-post-text">{{place.description}}</p>
-              </a>
-              <div className="read-more">
-                  <a href="/post/{{place.url}}">Leia mais ➭</a>
-              </div>
-          </div> */}
-
-
-
+        {posts.map(post => {
+          return (
+            <div className="caixa-post-padrao" id={`post-${post.idpost}`}>
+                <a href={`/post/${post.url}`}>
+                  <img className="box-img" src={`${post.thumb}`} alt={post.title} title={post.authorThumb} />
+                  <h1 className="caixa-post-titulo">
+                    {post.title}<hr className="border" style={{borderColor: 'rgb(255, 126, 0)', transitionDuration: '0.3s'}} />
+                  </h1>
+                    <p className="caixa-post-text">{post.text}</p>
+                </a>
+                <div className="read-more">
+                    <a href={`/post/${post.url}`}>Leia mais ➭</a>
+                </div>
+            </div>
+          )
+        })}
       </article>
     </section>
 
