@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   res.status(200).json([{ 
-    url: "como-usar-o-seu-subconsciente-para-afastar-o-medo.html",
+    url: "como-usar-o-seu-subconsciente-para-afastar-o-medo",
     thumb: "/images/publicacoes/como-usar-o-seu-subconsciente-para-afastar-o-medo-740x494.png",
     authorThumb: "Photo by Tim Trad on Unsplash",
     title: "Como Usar O Seu Subconsciente Para Afastar O Medo",
@@ -10,7 +10,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     idpost: 'post-21'
   },
   { 
-    url: "regras-que-mudam-as-regras.html",
+    url: "regras-que-mudam-as-regras",
     thumb: "/images/publicacoes/regras-que-mudam-as-regras-740x494.png",
     authorThumb: "Photo by Brendan Church on Unsplash",
     title: "Regras Que Mudam As Regras",
@@ -18,7 +18,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     idpost: 'post-20'
   },
   { 
-    url: "siga-a-estrategia-da-tela-em-branco.html",
+    url: "siga-a-estrategia-da-tela-em-branco",
     thumb: "/images/publicacoes/siga-a-estrategia-da-tela-em-branco-740x494.png",
     authorThumb: "Photo by Justyn Warner on Unsplash",
     title: "Siga A Estratégia Da Tela Em Branco",
@@ -27,7 +27,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   },
 
   { 
-    url: "como-fazer-as-pessoas-gostarem-de-voce-imediatamente.html",
+    url: "como-fazer-as-pessoas-gostarem-de-voce-imediatamente",
     thumb: "/images/publicacoes/como-fazer-as-pessoas-gostarem-de-voce-imediatamente-740x494.png",
     authorThumb: "Photo by Sebastian Herrmann on Unsplash",
     title: "Como Fazer As Pessoas Gostarem De Você Imediatamente",
@@ -36,7 +36,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   },
 
   { 
-    url: "10-modos-de-fracassar-que-voce-precisa-parar-de-cometer.html",
+    url: "10-modos-de-fracassar-que-voce-precisa-parar-de-cometer",
     thumb: "/images/publicacoes/10-modos-de-fracassar-que-voce-precisa-parar-de-cometer-740x494.png",
     authorThumb: "Photo by Nik Shuliahin on Unsplash",
     title: "10 Modos de Fracassar Que Você Precisa Parar de Cometer",
@@ -44,7 +44,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     idpost: 'post-17'
   },
   { 
-    url: "3-livros-que-farao-seus-sonhos-se-tornarem-realidade.html",
+    url: "3-livros-que-farao-seus-sonhos-se-tornarem-realidade",
     thumb: "/images/publicacoes/3-livros-que-farao-seus-sonhos-se-tornarem-realidade-740x494.png",
     authorThumb: "Photo by Annie Spratt on Unsplash",
     title: "3 Livros que Farão Seus Sonhos Se Tornarem Realidade",
@@ -52,7 +52,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     idpost: 'post-16'
   },
   { 
-    url: "adote-a-sabedoria-de-sua-crianca-interior.html",
+    url: "adote-a-sabedoria-de-sua-crianca-interior",
     thumb: "/images/publicacoes/adote-a-sabedoria-de-sua-crianca-interior-740x494.png",
     authorThumb: "Photo by Robert Collins on Unsplash",
     title: "Adote a Sabedoria de Sua Criança Interior",
@@ -60,7 +60,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     idpost: 'post-15'
   },
   { 
-    url: "o-habito-de-fazer-mais-do-que-a-obrigacao.html",
+    url: "o-habito-de-fazer-mais-do-que-a-obrigacao",
     thumb: "/images/publicacoes/o-habito-de-fazer-mais-do-que-a-obrigacao-740x494.png",
     authorThumb: "Photo by Bethany Legg on Unsplash",
     title: "O Hábito de Fazer Mais do que a Obrigação",
@@ -68,7 +68,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     idpost: 'post-14'
   },
   {
-    url: "pare-de-se-sabotar.html",
+    url: "pare-de-se-sabotar",
     thumb: "/images/publicacoes/pare-de-se-sabotar-740x494.png",
     authorThumb: "Photo by Jason Hogan on Unsplash",
     title: "Pare de Se Sabotar e Dê a Volta por Cima",
@@ -76,7 +76,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     idpost: 'post-13'
   },
   {
-    url: "ganhos-superiores-ao-contratado.html",
+    url: "ganhos-superiores-ao-contratado",
     thumb: "/images/publicacoes/tesouro-direto-ganhos-superiores-740x494.png",
     authorThumb: "Photo by M. B. M. on Unsplash",
     title: "Tesouro Direito - Ganhos Superiores",
@@ -84,7 +84,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     idpost: 'post-12'
   },
   {
-    url: "decisao-setimo-passo-em-direcao-a-riqueza.html",
+    url: "decisao-setimo-passo-em-direcao-a-riqueza",
     thumb: "/images/publicacoes/decisao-7-passo-direcao-riqueza-740x494.png",
     authorThumb: "Photo by Vladislav Babienko on Unsplash",
     title: "Decisão - Sétimo Passo Em Direção À Riqueza",
@@ -92,7 +92,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     idpost: 'post-11'
   },
   {
-    url: "a-estrategia-do-oceano-azul.html",
+    url: "a-estrategia-do-oceano-azul",
     thumb: "/images/publicacoes/a-estrategia-do-oceano-azul-740x494.png",
     authorThumb: "Photo by Pierre Leverrier on Unsplash",
     title: "A Estratégia do Oceano Azul",
@@ -100,7 +100,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     idpost: 'post-10'
   },
   {
-    url: "se-quer-tirar-mel-nao-espante-a-colmeia.html",
+    url: "se-quer-tirar-mel-nao-espante-a-colmeia",
     thumb: "/images/publicacoes/se-quer-tirar-mel-nao-espante-a-colmeia-740x494.png",
     authorThumb: "Photo by Adi Goldstein on Unsplash",
     title: "Se Quer Tirar Mel, Não Espante A Colmeia",
@@ -108,7 +108,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     idpost: 'post-9'
   },
   {
-    url: "comece-pelo-porque.html",
+    url: "comece-pelo-porque",
     thumb: "/images/publicacoes/comece-pelo-por-que-740x494.png",
     authorThumb: "Photo by Evan Dennis on Unsplash",
     title: "Comece Pelo Porquê",
@@ -116,7 +116,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     idpost: 'post-8'
   },
   {
-    url: "mais-esperto-que-o-diabo.html",
+    url: "mais-esperto-que-o-diabo",
     thumb: "/images/publicacoes/mais-esperto-que-o-diabo-740x494.png",
     authorThumb: "",
     title: "Mais Esperto Que O Diabo",
@@ -124,7 +124,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     idpost: 'post-7'
   },
   {
-    url: "melhore-sua-meditacao.html",
+    url: "melhore-sua-meditacao",
     thumb: "/images/publicacoes/melhore-sua-meditacao-740x494.png",
     authorThumb: "Photo by Jared Rice on Unsplash",
     title: "Melhore sua Meditação",
@@ -132,7 +132,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     idpost: 'post-6'
   },
   {
-    url: "qual-e-o-segredo.html",
+    url: "qual-e-o-segredo",
     thumb: "/images/publicacoes/qual-e-o-segredo740x494.png",
     authorThumb: "Photo by Greg Rakozy on Unsplash",
     title: "Qual é o Segredo?",
@@ -140,7 +140,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     idpost: 'post-5'
   },
   {
-    url: "seja-proativo.html",
+    url: "seja-proativo",
     thumb: "/images/publicacoes/proativo-740x494.png",
     authorThumb: "Photo by Patrick Perkins on Unsplash",
     title: "Hábito 1 - Seja Proativo",
@@ -148,7 +148,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     idpost: 'post-4'
   },
   {
-    url: "as-pessoas-rica-agem-apesar-do-medo.html",
+    url: "as-pessoas-rica-agem-apesar-do-medo",
     thumb: "/images/publicacoes/coragem740x494.png",
     authorThumb: "Photo by Sammie Vasquez on Unsplash",
     title: "As pessoas ricas agem apesar do medo",
@@ -156,7 +156,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     idpost: 'post-3'
   },
   {
-    url: "tempo-produtivo-ou-morto.html",
+    url: "tempo-produtivo-ou-morto",
     thumb: "/images/publicacoes/Tempo-util740x494.png",
     authorThumb: "Photo by Jiyeon Park on Unsplash",
     title: "Tempo produtivo ou Morto?",
@@ -164,7 +164,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     idpost: 'post-2'
   },
   {
-    url: "a-lei-da-represalia.html",
+    url: "a-lei-da-represalia",
     thumb: "/images/publicacoes/represalia740x494.png",
     authorThumb: "Photo by Lina Trochez on Unsplash",
     title: "A Lei da Represália",

@@ -2,49 +2,11 @@ import { GetServerSideProps } from "next";
 import { RichText } from "prismic-dom";
 import { PageHeader } from "../../components/PageHeader";
 import { getPrismicClient } from "../../services/prismic";
-import styled from 'styled-components';
 import React from "react";
 import { Footer } from "../../components/Footer";
 import { ButtonsPage } from "../../components/ButtonsPage";
 import { DiscussionEmbed } from 'disqus-react'
-
-const Content = styled.div`
-  h2 { 
-    margin: 20px auto 20px;
-    text-align: left;
-    font-weight: 600;
-    font-size: 1.9rem;
-    display: flex;
-    flex-direction: column-reverse;
-
-    strong {
-      margin-bottom: 10px;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      width: 65px;
-      border: 1px solid #FF7e00;
-
-    }
-  }
-  h3 {
-    border-left: 1.5px solid #FF7E00;
-    margin: 0px auto 10px auto;
-    font-size: 22px;
-    font-style: italic;
-    text-align: left;
-    padding-left: 30px;
-    font-weight: 100;
-  }
-  p {
-    margin: 20px auto 20px;
-    font-size: 20px;
-    color: #808080;
-    text-align: left;
-  }
-`;
+import { Content } from './styles';
 
 interface PostProps {
   post: {
