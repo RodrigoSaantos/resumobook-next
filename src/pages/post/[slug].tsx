@@ -1,20 +1,49 @@
 import { GetServerSideProps } from "next";
 import { RichText } from "prismic-dom";
-import React from "react";
 import { PageHeader } from "../../components/PageHeader";
 import { getPrismicClient } from "../../services/prismic";
+import styled from 'styled-components';
+import React from "react";
+import { Footer } from "../../components/Footer";
+import { ButtonsPage } from "../../components/ButtonsPage";
 
-// type Content = {
-//   body: string;
-//   heading: string;
-//   image: {
-//     url: string;
-//   };
-//   imageaside: {
-//     url: string;
-//   };
-//   reference: string
-// }
+const Content = styled.div`
+  h2 { 
+    margin: 20px auto 20px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.9rem;
+    display: flex;
+    flex-direction: column-reverse;
+
+    strong {
+      margin-bottom: 10px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 65px;
+      border: 1px solid #FF7e00;
+
+    }
+  }
+  h3 {
+    border-left: 1.5px solid #FF7E00;
+    margin: 0px auto 10px auto;
+    font-size: 22px;
+    font-style: italic;
+    text-align: left;
+    padding-left: 30px;
+    font-weight: 100;
+  }
+  p {
+    margin: 20px auto 20px;
+    font-size: 20px;
+    color: #808080;
+    text-align: left;
+  }
+`;
 
 interface PostProps {
   post: {
@@ -35,6 +64,10 @@ interface PostProps {
 export default function Post({
   post
 }: PostProps) {
+
+  function janelaPopUp(URL: string) {
+    window.open(URL, 'janela', 'width=795, height=590, top=100, left=699, scrollbars=no, status=no, toolbar=no, location=no, menubar=no, resizable=no, fullscreen=no')
+  }
 
   return (
     <>
@@ -63,7 +96,7 @@ export default function Post({
               {post.started}
             </p>
 
-            <div dangerouslySetInnerHTML={{__html: post.content}} />
+            <Content dangerouslySetInnerHTML={{__html: post.content}} />
 
 
             <button type="button" className="botao-voltar">Voltar</button>
@@ -77,8 +110,34 @@ export default function Post({
             </div>
           </div>
 
+          <aside className="caixa-post-padrao-2">
+          <section className="redes-sociais-estilo">
+            <span className="caixa-post-text-1">Compartilhe!</span>
+            <div className="redes-sociais-estilo-1">
+              <button type="button" className="botao-rede-social botao-facebook" onClick={() => janelaPopUp('https://www.facebook.com/sharer/sharer.php?u=https://resumobook.com.br/recomendacoes')}><img src="/images/publicacoes/facebook icone.png" alt="icone facebook" width="20" height="20" className="img-rede-social" />
+                <span className="rede-social-text">Compartilhe no Facebook</span></button>
+            </div>
+            <div className="redes-sociais-estilo-1">
+              <button type="button" className="botao-rede-social botao-twitter" onClick={() => janelaPopUp('https://twitter.com/intent/tweet?text={{places[numberPage].title}} https://resumobook.com.br/recomendacoes')}>
+                <img src="/images/publicacoes/twitter icone.png" alt="icone twitter" width="20" height="20" className="img-rede-social" style={{ marginLeft: "-28px"}} />
+                <span className="rede-social-text">Compartilhe no Twitter</span>
+              </button>
+            </div>
+            <div className="redes-sociais-estilo-1">
+              <button type="button" className="botao-rede-social botao-whatsapp" onClick={() => janelaPopUp('https://api.whatsapp.com/send?text=https://resumobook.com.br/recomendacoes')}><img src="/images/publicacoes/whasapp icone.png" alt="icone WhatsApp" width="20" height="20" className="img-rede-social" />
+                <span className="rede-social-text">Compartilhe no WhatsApp</span></button>
+            </div>
+            <div className="redes-sociais-estilo-1">
+              <button type="button" className="botao-rede-social botao-linkedin" onClick={() => janelaPopUp('https://www.linkedin.com/shareArticle?mini=true&url=https://resumobook.com.br/recomendacoes')}><img src="/images/publicacoes/linkedin icone.png" alt="icone Linkedin" width="20" height="20" className="img-rede-social" />
+                <span className="rede-social-text">Compartilhe no Linkedin</span></button>
+            </div>
+          </section>
+        </aside>
+
         </article>
       </section>
+      <ButtonsPage />
+      <Footer />
 
     </>
   )
