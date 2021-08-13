@@ -14,6 +14,7 @@
     "@prismicio/client": "^5.1.0",
     "@types/prismic-dom": "^2.1.1",
     "axios": "^0.21.1",
+    "disqus-react": "^1.1.1",
     "framer-motion": "4",
     "next": "10.2.3",
     "prismic-dom": "^2.2.6",

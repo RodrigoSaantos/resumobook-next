@@ -1557,6 +1557,11 @@ diffie-hellman@^5.0.0:
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
 
+disqus-react@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/disqus-react/-/disqus-react-1.1.1.tgz#48b3cd10eb6056a875c1bb047dd87c21c02bfda4"
+  integrity sha512-Ob6/3l3WQb682RLplStVZsvRbGnD2DdppmwmHZ3PO7JNyLZfdldKGXnotm0ZhdTCX6DM8oE4Bpr08cSymBIdzg==
+
 domain-browser@4.19.0:
   version "4.19.0"
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-4.19.0.tgz#1093e17c0a17dbd521182fe90d49ac1370054af1"

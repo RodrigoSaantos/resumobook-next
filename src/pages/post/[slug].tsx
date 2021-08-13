@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import React from "react";
 import { Footer } from "../../components/Footer";
 import { ButtonsPage } from "../../components/ButtonsPage";
+import { DiscussionEmbed } from 'disqus-react'
 
 const Content = styled.div`
   h2 { 
@@ -108,29 +109,41 @@ export default function Post({
               <div className="regua-horizontal-corpo-1"></div>
               <img src="/images/publicacoes/compartilhe-amor-nos-diga-o-que-voce-acha.png" alt="Deixe seu comentário" width="597" height="63" className="image-compartilhe" />
             </div>
+            <DiscussionEmbed
+                shortname='Resumobook'
+                config={
+                    {
+                        url: `https://resumobook-1.disqus.com/embed.js`,
+                        identifier: post.slug,
+                        title: post.title,
+                    }
+                }
+            />
           </div>
 
           <aside className="caixa-post-padrao-2">
           <section className="redes-sociais-estilo">
             <span className="caixa-post-text-1">Compartilhe!</span>
             <div className="redes-sociais-estilo-1">
-              <button type="button" className="botao-rede-social botao-facebook" onClick={() => janelaPopUp('https://www.facebook.com/sharer/sharer.php?u=https://resumobook.com.br/recomendacoes')}><img src="/images/publicacoes/facebook icone.png" alt="icone facebook" width="20" height="20" className="img-rede-social" />
+              <button type="button" className="botao-rede-social botao-facebook" onClick={() => janelaPopUp(`https://www.facebook.com/sharer/sharer.php?u=https://resumobook.com.br/post/${post.slug}`)}><img src="/images/publicacoes/facebook icone.png" alt="icone facebook" width="20" height="20" className="img-rede-social" />
                 <span className="rede-social-text">Compartilhe no Facebook</span></button>
             </div>
             <div className="redes-sociais-estilo-1">
-              <button type="button" className="botao-rede-social botao-twitter" onClick={() => janelaPopUp('https://twitter.com/intent/tweet?text={{places[numberPage].title}} https://resumobook.com.br/recomendacoes')}>
+              <button type="button" className="botao-rede-social botao-twitter" onClick={() => janelaPopUp(`https://twitter.com/intent/tweet?text={{places[numberPage].title}} https://resumobook.com.br/post/${post.slug}`)}>
                 <img src="/images/publicacoes/twitter icone.png" alt="icone twitter" width="20" height="20" className="img-rede-social" style={{ marginLeft: "-28px"}} />
                 <span className="rede-social-text">Compartilhe no Twitter</span>
               </button>
             </div>
             <div className="redes-sociais-estilo-1">
-              <button type="button" className="botao-rede-social botao-whatsapp" onClick={() => janelaPopUp('https://api.whatsapp.com/send?text=https://resumobook.com.br/recomendacoes')}><img src="/images/publicacoes/whasapp icone.png" alt="icone WhatsApp" width="20" height="20" className="img-rede-social" />
+              <button type="button" className="botao-rede-social botao-whatsapp" onClick={() => janelaPopUp(`https://api.whatsapp.com/send?text=https://resumobook.com.br/post/${post.slug}`)}><img src="/images/publicacoes/whasapp icone.png" alt="icone WhatsApp" width="20" height="20" className="img-rede-social" />
                 <span className="rede-social-text">Compartilhe no WhatsApp</span></button>
             </div>
             <div className="redes-sociais-estilo-1">
-              <button type="button" className="botao-rede-social botao-linkedin" onClick={() => janelaPopUp('https://www.linkedin.com/shareArticle?mini=true&url=https://resumobook.com.br/recomendacoes')}><img src="/images/publicacoes/linkedin icone.png" alt="icone Linkedin" width="20" height="20" className="img-rede-social" />
+              <button type="button" className="botao-rede-social botao-linkedin" onClick={() => janelaPopUp(`https://www.linkedin.com/shareArticle?mini=true&url=https://resumobook.com.br/post/${post.slug}`)}><img src="/images/publicacoes/linkedin icone.png" alt="icone Linkedin" width="20" height="20" className="img-rede-social" />
                 <span className="rede-social-text">Compartilhe no Linkedin</span></button>
             </div>
+
+            
           </section>
         </aside>
 
