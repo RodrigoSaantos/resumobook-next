@@ -91,9 +91,11 @@ export default function Post({
             <button type="button" className="botao-voltar" onClick={back}>Voltar</button>
 
             <div className="regua-horizonatal-position-1">
-              <a href={`${post.affiliate}`} target="_blank">
-                <button type="button" className="botao botao-centralizado">Caso queira adquirir o livro clique aqui</button>
-              </a>
+              {post.affiliate && (
+                <a href={`${post.affiliate}`} target="_blank">
+                  <button type="button" className="botao botao-centralizado">Caso queira adquirir o livro clique aqui</button>
+                </a>
+              )}
               <div className="regua-horizontal-corpo-1"></div>
               <img src="/images/publicacoes/compartilhe-amor-nos-diga-o-que-voce-acha.png" alt="Deixe seu comentário" width="597" height="63" className="image-compartilhe" />
             </div>
@@ -176,7 +178,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     introduction: RichText.asText(response.data.introduction),
     banner: response.data.banner,
     content: RichText.asHtml(response.data.content),
-    affiliate: response.data.affiliate.url,
+    affiliate: response.data.affiliate.url ? response.data.affiliate.url : null,
     started: response.data.started,
     ended: response.data.ended,
     date: response.data.date,
