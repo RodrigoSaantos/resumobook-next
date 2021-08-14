@@ -5,6 +5,17 @@ import { getPrismicClient } from "../../services/prismic";
 import { Footer } from "../../components/Footer";
 import { ButtonsPage } from "../../components/ButtonsPage";
 import { DiscussionEmbed } from 'disqus-react'
+import Prismic from '@prismicio/client';
+import Head from "next/head";
+import Router from "next/router";
+
+type Post = {
+  slug: string;
+  banner: string;
+  title: string;
+  description: string;
+  updatedAt: string;
+}
 
 interface PostProps {
   post: {
@@ -19,19 +30,36 @@ interface PostProps {
     ended: string;
     started: string;
     date: string;
-  }
+  },
+  lastPosts: Post[];
 }
 
 export default function Post({
-  post
+  post,
+  lastPosts,
 }: PostProps) {
 
   function janelaPopUp(URL: string) {
     window.open(URL, 'janela', 'width=795, height=590, top=100, left=699, scrollbars=no, status=no, toolbar=no, location=no, menubar=no, resizable=no, fullscreen=no')
   }
 
+  function back() {
+    Router.back();
+  }
+
   return (
     <>
+    <Head>
+      <title>ResumoBook | {post.title}</title>
+
+      <meta name="description" content={post.introduction} />
+      <meta property="og:url" content={`https://resumobook.com.br/post/${post.slug}`} />
+      <meta property="og:type" content="article" />
+      <meta property="og:title" content={`${post.title}`} />
+      <meta property="og:description" content={post.introduction} />
+      <meta property="og:image" content={`${post.banner.url}`} />
+      <meta property="og:image:secure_url" content={`${post.banner.url}`} />
+    </Head>
       <PageHeader />
 
       <section className="fundo-pg-padrao">
@@ -60,10 +88,10 @@ export default function Post({
             <div id='post-content' dangerouslySetInnerHTML={{__html: post.content}} />
 
 
-            <button type="button" className="botao-voltar">Voltar</button>
+            <button type="button" className="botao-voltar" onClick={back}>Voltar</button>
 
             <div className="regua-horizonatal-position-1">
-              <a href="{{places[numberPage].customLinkAffiliate}}" target="_blank">
+              <a href={`${post.affiliate}`} target="_blank">
                 <button type="button" className="botao botao-centralizado">Caso queira adquirir o livro clique aqui</button>
               </a>
               <div className="regua-horizontal-corpo-1"></div>
@@ -82,32 +110,47 @@ export default function Post({
           </div>
 
           <aside className="caixa-post-padrao-2">
-          <section className="redes-sociais-estilo">
-            <span className="caixa-post-text-1">Compartilhe!</span>
-            <div className="redes-sociais-estilo-1">
-              <button type="button" className="botao-rede-social botao-facebook" onClick={() => janelaPopUp(`https://www.facebook.com/sharer/sharer.php?u=https://resumobook.com.br/post/${post.slug}`)}><img src="/images/publicacoes/facebook icone.png" alt="icone facebook" width="20" height="20" className="img-rede-social" />
-                <span className="rede-social-text">Compartilhe no Facebook</span></button>
-            </div>
-            <div className="redes-sociais-estilo-1">
-              <button type="button" className="botao-rede-social botao-twitter" onClick={() => janelaPopUp(`https://twitter.com/intent/tweet?text={{places[numberPage].title}} https://resumobook.com.br/post/${post.slug}`)}>
-                <img src="/images/publicacoes/twitter icone.png" alt="icone twitter" width="20" height="20" className="img-rede-social" style={{ marginLeft: "-28px"}} />
-                <span className="rede-social-text">Compartilhe no Twitter</span>
-              </button>
-            </div>
-            <div className="redes-sociais-estilo-1">
-              <button type="button" className="botao-rede-social botao-whatsapp" onClick={() => janelaPopUp(`https://api.whatsapp.com/send?text=https://resumobook.com.br/post/${post.slug}`)}><img src="/images/publicacoes/whasapp icone.png" alt="icone WhatsApp" width="20" height="20" className="img-rede-social" />
-                <span className="rede-social-text">Compartilhe no WhatsApp</span></button>
-            </div>
-            <div className="redes-sociais-estilo-1">
-              <button type="button" className="botao-rede-social botao-linkedin" onClick={() => janelaPopUp(`https://www.linkedin.com/shareArticle?mini=true&url=https://resumobook.com.br/post/${post.slug}`)}><img src="/images/publicacoes/linkedin icone.png" alt="icone Linkedin" width="20" height="20" className="img-rede-social" />
-                <span className="rede-social-text">Compartilhe no Linkedin</span></button>
-            </div>
+            <section className="redes-sociais-estilo">
+              <span className="caixa-post-text-1">Compartilhe!</span>
+              <div className="redes-sociais-estilo-1">
+                <button type="button" className="botao-rede-social botao-facebook" onClick={() => janelaPopUp(`https://www.facebook.com/sharer/sharer.php?u=https://resumobook.com.br/post/${post.slug}`)}><img src="/images/publicacoes/facebook icone.png" alt="icone facebook" width="20" height="20" className="img-rede-social" />
+                  <span className="rede-social-text">Compartilhe no Facebook</span></button>
+              </div>
+              <div className="redes-sociais-estilo-1">
+                <button type="button" className="botao-rede-social botao-twitter" onClick={() => janelaPopUp(`https://twitter.com/intent/tweet?text={{places[numberPage].title}} https://resumobook.com.br/post/${post.slug}`)}>
+                  <img src="/images/publicacoes/twitter icone.png" alt="icone twitter" width="20" height="20" className="img-rede-social" style={{ marginLeft: "-28px"}} />
+                  <span className="rede-social-text">Compartilhe no Twitter</span>
+                </button>
+              </div>
+              <div className="redes-sociais-estilo-1">
+                <button type="button" className="botao-rede-social botao-whatsapp" onClick={() => janelaPopUp(`https://api.whatsapp.com/send?text=https://resumobook.com.br/post/${post.slug}`)}><img src="/images/publicacoes/whasapp icone.png" alt="icone WhatsApp" width="20" height="20" className="img-rede-social" />
+                  <span className="rede-social-text">Compartilhe no WhatsApp</span></button>
+              </div>
+              <div className="redes-sociais-estilo-1">
+                <button type="button" className="botao-rede-social botao-linkedin" onClick={() => janelaPopUp(`https://www.linkedin.com/shareArticle?mini=true&url=https://resumobook.com.br/post/${post.slug}`)}><img src="/images/publicacoes/linkedin icone.png" alt="icone Linkedin" width="20" height="20" className="img-rede-social" />
+                  <span className="rede-social-text">Compartilhe no Linkedin</span></button>
+              </div>
 
-            
-          </section>
-        </aside>
+              
+            </section>
+          </aside>
 
         </article>
+
+        <section className="article-padrao">
+            <p className="last-post-text">Últimos Posts</p>
+
+            {lastPosts.map(post => {
+              return (
+                <article className="last-post-box" style={{ borderBottom: 'none'}} key={post.slug}>
+                  <a href={post.slug}>
+                    <img className="box-img" src={post.banner} alt={post.title} title={post.title}/>
+                      <h1 className="caixa-post-titulo">{post.title}<hr className="border" /></h1>
+                  </a>
+                </article>
+              )
+            })}
+        </section>
       </section>
       <ButtonsPage />
       <Footer />
@@ -147,9 +190,36 @@ export const getServerSideProps: GetServerSideProps = async ({
     //   ),
   };
 
+  const lastPostResponse = await prismic.query(
+    [Prismic.predicates.at('document.type', 'post')],
+    {
+      orderings: '[document.last_publication_date desc]',
+      fetch: ['post.title', 'post.banner', 'post.introduction'],
+      pageSize: 3,
+    },
+  );
+
+  const lastPosts = lastPostResponse.results.map(post => {
+    return {
+      slug: post.uid,
+      title: RichText.asText(post.data.title),
+      banner: post.data.banner.url,
+      description: RichText.asText(post.data.introduction),
+      updatedAt: new Date(post.last_publication_date as string).toLocaleDateString(
+        'pt-BR',
+        {
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric',
+        },
+      ),
+    };
+  });
+
   return {
     props: {
       post,
+      lastPosts,
     },
   };
 };

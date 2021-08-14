@@ -14,7 +14,6 @@ type Post = {
   slug: string;
   banner: string;
   title: string;
-  excerpt: string;
   description: string;
   updatedAt: string;
 }
@@ -81,7 +80,8 @@ export const getStaticProps: GetStaticProps = async () => {
   const response = await prismic.query(
     [Prismic.predicates.at('document.type', 'post')],
     {
-      fetch: ['post.title', 'post.content', 'post.banner', 'post.introduction'],
+      orderings: '[document.last_publication_date desc]',
+      fetch: ['post.title', 'post.banner', 'post.introduction'],
       pageSize: 100,
     },
   );
@@ -92,9 +92,6 @@ export const getStaticProps: GetStaticProps = async () => {
       title: RichText.asText(post.data.title),
       banner: post.data.banner.url,
       description: RichText.asText(post.data.introduction),
-      excerpt:
-        post.data.content.find(content => content.type === 'paragraph')?.text ??
-        '',
       updatedAt: new Date(post.last_publication_date as string).toLocaleDateString(
         'pt-BR',
         {
