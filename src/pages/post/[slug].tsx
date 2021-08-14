@@ -2,11 +2,9 @@ import { GetServerSideProps } from "next";
 import { RichText } from "prismic-dom";
 import { PageHeader } from "../../components/PageHeader";
 import { getPrismicClient } from "../../services/prismic";
-import React from "react";
 import { Footer } from "../../components/Footer";
 import { ButtonsPage } from "../../components/ButtonsPage";
 import { DiscussionEmbed } from 'disqus-react'
-import { Content } from './styles';
 
 interface PostProps {
   post: {
@@ -59,7 +57,7 @@ export default function Post({
               {post.started}
             </p>
 
-            <Content dangerouslySetInnerHTML={{__html: post.content}} />
+            <div id='post-content' dangerouslySetInnerHTML={{__html: post.content}} />
 
 
             <button type="button" className="botao-voltar">Voltar</button>

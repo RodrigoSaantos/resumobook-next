@@ -5,24 +5,32 @@ import { ButtonsPage } from "../../components/ButtonsPage";
 import { Footer } from "../../components/Footer";
 import { PageHeader } from "../../components/PageHeader";
 import axios from 'axios';
+import { GetStaticProps } from "next";
+import { getPrismicClient } from "../../services/prismic";
+import Prismic from '@prismicio/client';
+import { RichText } from 'prismic-dom';
 
-type PostProps = {
-  url: string;
-  thumb: string;
-  authorThumb: string;
+type Post = {
+  slug: string;
+  banner: string;
   title: string;
-  text: string;
-  idpost: string;
+  excerpt: string;
+  description: string;
+  updatedAt: string;
 }
 
-export default function Falecom() {
-  const [posts, setPosts] = useState<PostProps[]>([]);
+interface PageProps {
+  posts: Post[];
+}
 
-  useEffect(() => {
-    axios.get('/api/posts').then(response => {
-      setPosts(response.data)
-    })
-  }, [])
+export default function Page({ posts }: PageProps) {
+  // const [posts, setPosts] = useState<PageProps[]>([]);
+
+  // useEffect(() => {
+  //   axios.get('/api/posts').then(response => {
+  //     setPosts(response.data)
+  //   })
+  // }, [])
   return (
     <>
     <Head>
@@ -33,7 +41,6 @@ export default function Falecom() {
       <meta property="og:title" content="ResumoBook" />
       <meta property="og:description" content="O melhor dos resumos dos livros" />
     </Head>
-
     <PageHeader />
 
     <section id="header" className="post">
@@ -45,16 +52,16 @@ export default function Falecom() {
 
         {posts.map(post => {
           return (
-            <div className="caixa-post-padrao" id={`post-${post.idpost}`}>
-                <a href={`/post/${post.url}`}>
-                  <img className="box-img" src={`${post.thumb}`} alt={post.title} title={post.authorThumb} />
+            <div className="caixa-post-padrao" key={`post-${post.slug}`}>
+                <a href={`/post/${post.slug}`}>
+                  <img className="box-img" src={`${post.banner}`} alt={post.title} title={post.title} />
                   <h1 className="caixa-post-titulo">
                     {post.title}<hr className="border" style={{borderColor: 'rgb(255, 126, 0)', transitionDuration: '0.3s'}} />
                   </h1>
-                    <p className="caixa-post-text">{post.text}</p>
+                    <p className="caixa-post-text">{post.description}</p>
                 </a>
                 <div className="read-more">
-                    <a href={`/post/${post.url}`}>Leia mais ➭</a>
+                    <a href={`/post/${post.banner}`}>Leia mais ➭</a>
                 </div>
             </div>
           )
@@ -67,5 +74,42 @@ export default function Falecom() {
     </>
   )
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const prismic = getPrismicClient();
+
+  const response = await prismic.query(
+    [Prismic.predicates.at('document.type', 'post')],
+    {
+      fetch: ['post.title', 'post.content', 'post.banner', 'post.introduction'],
+      pageSize: 100,
+    },
+  );
+
+  const posts = response.results.map(post => {
+    return {
+      slug: post.uid,
+      title: RichText.asText(post.data.title),
+      banner: post.data.banner.url,
+      description: RichText.asText(post.data.introduction),
+      excerpt:
+        post.data.content.find(content => content.type === 'paragraph')?.text ??
+        '',
+      updatedAt: new Date(post.last_publication_date as string).toLocaleDateString(
+        'pt-BR',
+        {
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric',
+        },
+      ),
+    };
+  });
+  return {
+    props: {
+      posts,
+    },
+  };
+};
 
 
