@@ -8,6 +8,7 @@ import { DiscussionEmbed } from 'disqus-react'
 import Prismic from '@prismicio/client';
 import Head from "next/head";
 import Router from "next/router";
+import { ParsedUrlQuery } from "querystring";
 
 type Post = {
   slug: string;
@@ -32,6 +33,10 @@ interface PostProps {
     date: string;
   },
   lastPosts: Post[];
+}
+
+interface IParams extends ParsedUrlQuery {
+  slug: string
 }
 
 export default function Post({
@@ -166,7 +171,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   params,
 }) => {
 
-  const { slug } = params;
+  const { slug } = params as IParams;
 
   const prismic = getPrismicClient(req);
 
